@@ -26,11 +26,11 @@ public class DB {
         }
         return false;
     }
-    public static String getTablespaces(){return resultSetToJson(getFromDB(" * ", "TABLESPACES"));}
-    public static String getDatafiles(){return resultSetToJson(getFromDB(" * ", "DATAFILES"));}
-    public static String getStats(){return resultSetToJson(getFromDB(" * ", "STATS"));}
-    public static String getSessions(){return resultSetToJson(getFromDB(" * ", "SESSIONS"));}
-    public static String getUsers(){return resultSetToJson(getFromDB(" * ", "USERS"));}
+    public String getTablespaces(){return resultSetToJson(getFromDB(" * ", "TABLESPACES"));}
+    public String getDatafiles(){return resultSetToJson(getFromDB(" * ", "DATAFILES"));}
+    public String getStats(){return resultSetToJson(getFromDB(" * ", "STATS"));}
+    public String getSessions(){return resultSetToJson(getFromDB(" * ", "SESSIONS"));}
+    public String getUsers(){return resultSetToJson(getFromDB(" * ", "USERS"));}
 
     private static String resultSetToJson(ResultSet rs){
         List<String> list = new ArrayList<String>();
@@ -64,7 +64,7 @@ public class DB {
             return null;
         }
     }
-    public boolean disconnectDB(){
+    public static boolean disconnectDB(){
         try{
             conn.close();
             return true;
