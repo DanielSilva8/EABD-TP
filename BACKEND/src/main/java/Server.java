@@ -4,7 +4,9 @@ import io.vertx.core.Future;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
-
+/**
+ * Created by danys on 12-Dec-17.
+ */
 public class Server extends AbstractVerticle {
     DB db = new DB();
     @Override
@@ -53,6 +55,8 @@ public class Server extends AbstractVerticle {
     private void get(RoutingContext routingContext, String json) {
         routingContext.response()
                 .putHeader("content-type", "application/json; charset=utf-8")
+                .putHeader("Access-Control-Allow-Origin", "*")
+                .putHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
                 .end(json);
     }
 }

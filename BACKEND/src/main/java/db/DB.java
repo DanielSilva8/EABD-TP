@@ -1,5 +1,4 @@
 package db;
-
 import com.google.gson.Gson;
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,7 +10,6 @@ import java.util.List;
  */
 public class DB {
     private static Connection conn = null;
-    private static Statement stmt = null;
     public DB(){
         System.out.println("DB Connection Status: " + (connectDB() ? "CONNECTED" : "ERROR"));
     }
@@ -31,8 +29,7 @@ public class DB {
     public String getStats(){return resultSetToJson(getFromDB(" * ", "STATS"));}
     public String getSessions(){return resultSetToJson(getFromDB(" * ", "SESSIONS"));}
     public String getUsers(){return resultSetToJson(getFromDB(" * ", "USERS"));}
-
-    private static String resultSetToJson(ResultSet rs){
+    private String resultSetToJson(ResultSet rs){
         List<String> list = new ArrayList<String>();
         try {
             HashMap<String,String> map = new HashMap<String, String>();
@@ -56,8 +53,10 @@ public class DB {
     private static ResultSet getFromDB(String properties, String tableName){
         String query = "SELECT " + properties + " FROM " + tableName;
         try {
+            Statement stmt;
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
+            stmt.close();
             return rs;
         } catch (SQLException e) {
             e.printStackTrace();
