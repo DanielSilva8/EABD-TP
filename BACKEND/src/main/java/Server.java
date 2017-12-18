@@ -9,8 +9,11 @@ import io.vertx.ext.web.RoutingContext;
  */
 public class Server extends AbstractVerticle {
     DB db = new DB();
+
     @Override
     public void start(Future<Void> fut) {
+
+
         Router router = Router.router(vertx);
         router.route("/").handler(routingContext -> {
             HttpServerResponse response = routingContext.response();
@@ -27,7 +30,7 @@ public class Server extends AbstractVerticle {
                 .createHttpServer()
                 .requestHandler(router::accept)
                 .listen(
-                        config().getInteger("http.port", 8083),
+                        config().getInteger("http.port", System.getProperty("S_PORT") == null ? 8083 : Integer.parseInt(System.getProperty("S_PORT"))),
                         result -> {
                             if (result.succeeded()) {
                                 fut.complete();
@@ -36,6 +39,8 @@ public class Server extends AbstractVerticle {
                             }
                         }
                 );
+
+        System.out.println("Server running at: http://localhost:" + (System.getProperty("S_PORT") == null ? 8083 : Integer.parseInt(System.getProperty("S_PORT"))));
     }
     private void getUsers(RoutingContext routingContext) {
         get(routingContext, db.getUsers());

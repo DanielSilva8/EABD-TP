@@ -14,21 +14,28 @@ public class DB {
         System.out.println("DB Connection Status: " + (connectDB() ? "CONNECTED" : "ERROR"));
     }
     private boolean connectDB(){
+
         try {
+            System.out.println("Connecting to DB");
+            System.out.println("HOST: " + OracleProperties.getDefaultDatabaseAddress());
+            System.out.println("PORT: " + OracleProperties.getDefaultDatabasePort());
+            System.out.println("SID: " + OracleProperties.getDefaultSid());
+            System.out.println("USER: " + OracleProperties.getDefaultUser());
             conn = OracleProperties.createConnection();
             return true;
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            System.out.println("Couldn't connect. Check your credentials");
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Couldn't connect. Check your credentials");
         }
         return false;
     }
-    public String getTablespaces(){return resultSetToJson(getFromDB(" * ", "TABLESPACES"));}
-    public String getDatafiles(){return resultSetToJson(getFromDB(" * ", "DATAFILES"));}
-    public String getStats(){return resultSetToJson(getFromDB(" * ", "STATS"));}
-    public String getSessions(){return resultSetToJson(getFromDB(" * ", "SESSIONS"));}
-    public String getUsers(){return resultSetToJson(getFromDB(" * ", "USERS"));}
+
+    public String getTablespaces(){return getFromDB(" * ", "TABLESPACES");}
+    public String getDatafiles(){return getFromDB(" * ", "DATAFILES");}
+    public String getStats(){return getFromDB(" * ", "STATS");}
+    public String getSessions(){return getFromDB(" * ", "SESSIONS");}
+    public String getUsers(){return getFromDB(" * ", "USERS");}
     private String resultSetToJson(ResultSet rs){
         List<String> list = new ArrayList<String>();
         try {
@@ -50,14 +57,15 @@ public class DB {
         }
         return list.toString();
     }
-    private static ResultSet getFromDB(String properties, String tableName){
+    private String getFromDB(String properties, String tableName){
         String query = "SELECT " + properties + " FROM " + tableName;
+        Statement stmt;
         try {
-            Statement stmt;
             stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(query);
+            String json = resultSetToJson(rs);
             stmt.close();
-            return rs;
+            return json;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;

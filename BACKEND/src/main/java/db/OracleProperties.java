@@ -9,13 +9,12 @@ import java.sql.SQLException;
  */
 public class OracleProperties {
 
-    private static final String DEFAULT_DATABASE_ADDRESS = "127.0.0.1";
-    private static final String DEFAULT_CONNECTION_NAME = "TP.ORCL12";
-    private static final int DEFAULT_DATABASE_PORT = 1521;
-    private static final String DEFAULT_SID = "UPGR";
-    private static final String DEFAULT_USER = "tp";
-    private static final String DEFAULT_PASSWORD = "oracle";
+    private static final String DEFAULT_DATABASE_ADDRESS =  System.getProperty("HOST") == null ? "127.0.0.1" : System.getProperty("HOST");
 
+    private static final int DEFAULT_DATABASE_PORT = System.getProperty("PORT") == null ? 1521 : Integer.parseInt(System.getProperty("PORT")) ;
+    private static final String DEFAULT_SID = System.getProperty("SID") == null ? "UPGR" : System.getProperty("SID") ;
+    private static final String DEFAULT_USER = System.getProperty("USER") == null ? "tp" : System.getProperty("USER");
+    private static final String DEFAULT_PASSWORD = System.getProperty("PASS") == null ? "oracle" : System.getProperty("PASS") ;
 
     public static Connection createConnection() throws ClassNotFoundException, SQLException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -25,10 +24,6 @@ public class OracleProperties {
 
     public static String getDefaultDatabaseAddress() {
         return DEFAULT_DATABASE_ADDRESS;
-    }
-
-    public static String getDefaultConnectionName() {
-        return DEFAULT_CONNECTION_NAME;
     }
 
     public static int getDefaultDatabasePort() {
@@ -41,9 +36,5 @@ public class OracleProperties {
 
     public static String getDefaultUser() {
         return DEFAULT_USER;
-    }
-
-    public static String getDefaultPassword() {
-        return DEFAULT_PASSWORD;
     }
 }
