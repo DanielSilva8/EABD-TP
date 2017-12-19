@@ -1,0 +1,17 @@
+{
+  "name": "reacteabd",
+  "version": "1.0.0",
+  "description": "eabd - tp - presentation layer",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --hot"
+  },
+  "author": "Daniel Silva",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
+  }
+}
