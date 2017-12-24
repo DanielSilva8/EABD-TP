@@ -6,6 +6,7 @@ class Datafiles extends React.Component {
         super(props);
 
         this.state = {data : []};
+        this.Datafiles = this.Datafiles.bind(this);
     }
 
 
@@ -20,13 +21,21 @@ class Datafiles extends React.Component {
         });
     }
 
+    formatBytes(bytes) {
+        
+    if(bytes < 1024) return bytes + " Bytes";
+    else if(bytes < 1048576) return(bytes / 1024).toFixed(3) + " KB";
+    else if(bytes < 1073741824) return(bytes / 1048576).toFixed(3) + " MB";
+    else return(bytes / 1073741824).toFixed(3) + " GB";
+
+    }
+
     render() {
         return (
 
             <table className="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th></th>
                     <th>Name</th>
                     <th>Tablespace</th>
                     <th>Size</th>
@@ -38,10 +47,9 @@ class Datafiles extends React.Component {
 
                     return (
                         <tr key = {key}>
-                            <td>{item.DATAFILE_ID}</td>
-                            <td>{item.NAME}</td>
+                            <td>{item.FILE_NAME}</td>
                             <td>{item.TABLESPACE_NAME}</td>
-                            <td>{item.DATAFILE_SIZE}</td>
+                            <td>{(item.BYTES / 1048576).toFixed(0)} MB</td>
                             <td>{item.STATUS}</td>
                         </tr>
                     );

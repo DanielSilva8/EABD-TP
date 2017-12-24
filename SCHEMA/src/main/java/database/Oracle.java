@@ -13,7 +13,6 @@ import java.sql.*;
 public class Oracle {
 
     Connection conn = null;
-    Statement stmt = null;
     OracleProperties prop = new OracleProperties();
 
     public boolean connectDB(){
@@ -30,27 +29,9 @@ public class Oracle {
 
     }
 
-    public void getUsers(){
-
-    }
-
     public Connection getConn() {
         return conn;
     }
-
-    private ResultSet getFromDB(String properties, String tableName){
-
-        String query = "SELECT " + properties + " FROM " + tableName;
-        try {
-            stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            return rs;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
 
     public boolean disconnectDB(){
 

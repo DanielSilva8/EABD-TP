@@ -6,16 +6,18 @@ class UsersTable extends React.Component {
         super(props);
 
         this.state = {user : []};
+        this.UsersTable = this.UsersTable.bind(this);
     }
 
 
     componentDidMount() {
-
+    
       this.UsersTable();
       setInterval(this.UsersTable, 5000);
     }
 
     UsersTable() {
+        
         $.getJSON("http://localhost:8083/users", (json) => {
             this.setState({user: json});
         });
@@ -42,7 +44,7 @@ class UsersTable extends React.Component {
                              <td>{item.USER_ID}</td>
                             <td>{item.USERNAME}</td>
                             <td>{item.CREATED}</td>
-                            <td>{item.STATUS}</td>
+                            <td>{item.ACCOUNT_STATUS}</td>
                         </tr>
                     );
 

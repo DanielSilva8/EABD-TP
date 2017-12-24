@@ -18,7 +18,6 @@ public class Schema {
         try {
             runner.runScript(new BufferedReader(new FileReader(OracleProperties.getDefaultSchemaPath())));
             System.out.println("Schema created");
-            seed(conn);
             return;
         } catch (IOException e) {
             e.printStackTrace();

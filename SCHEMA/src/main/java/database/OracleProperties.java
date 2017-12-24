@@ -13,7 +13,7 @@ public class OracleProperties {
     private static final String DEFAULT_PASSWORD = "oracle";
     private static final String DEFAULT_SCHEMA_PATH = System.getProperty("user.dir") + "/src/main/java/database/schema.sql";
     private static final String DEFAULT_DROP_SCHEMA_PATH = System.getProperty("user.dir") + "/src/main/java/database/drop.sql";
-    private static final String DEFAULT_SEED_SCHEMA_PATH = "C:/Sites/EABD/src/main/java/database/seed.sql";
+    private static final String DEFAULT_SEED_SCHEMA_PATH = System.getProperty("user.dir") + "/src/main/java/database/seed.sql";
 
     public static String getDefaultSeedSchemaPath() {
         return DEFAULT_SEED_SCHEMA_PATH;

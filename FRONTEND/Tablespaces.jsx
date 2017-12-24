@@ -6,6 +6,7 @@ class Tablespaces extends React.Component {
         super(props);
 
         this.state = {data : []};
+        this.Tablespaces = this.Tablespaces.bind(this);
     }
 
 
@@ -35,7 +36,7 @@ class Tablespaces extends React.Component {
 
                     return (
                         <tr key = {key}>
-                            <td>{item.NAME}</td>
+                            <td>{item.TABLESPACE_NAME}</td>
                             <td>{item.STATUS}</td>
                         </tr>
                     );

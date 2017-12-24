@@ -5,11 +5,12 @@ class Sessions extends React.Component {
         super(props);
 
         this.state = {data : []};
+        this.Sessions = this.Sessions.bind(this);
+
     }
 
-
     componentDidMount() {
-       this.Sessions();
+        this.Sessions();
        setInterval(this.Sessions, 5000);
     }
 
@@ -18,7 +19,6 @@ class Sessions extends React.Component {
             this.setState({data: json});
         });
     }
-
 
     render() {
         return (
@@ -40,8 +40,8 @@ class Sessions extends React.Component {
 
                     return (
                         <tr key = {key}>
-                            <td>{item.SESSION_ID}</td>
-                            <td>{item.SCHEMA}</td>
+                            <td>{item.SID}</td>
+                            <td>{item.SCHEMANAME}</td>
                             <td>{item.TYPE}</td>
                             <td>{item.MACHINE}</td>
                             <td>{item.PROGRAM}</td>
@@ -56,3 +56,4 @@ class Sessions extends React.Component {
     }
 }
 export default Sessions;
+
