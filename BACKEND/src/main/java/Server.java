@@ -26,6 +26,7 @@ public class Server extends AbstractVerticle {
         router.get("/datafiles").handler(this::getDatafiles);
         router.get("/stats").handler(this::getStats);
         router.get("/sessions").handler(this::getSessions);
+        router.get("/memory").handler(this::getMemory);
         vertx
                 .createHttpServer()
                 .requestHandler(router::accept)
@@ -56,6 +57,9 @@ public class Server extends AbstractVerticle {
     }
     private void getSessions(RoutingContext routingContext) {
         get(routingContext, db.getSessions());
+    }
+    private void getMemory(RoutingContext routingContext) {
+        get(routingContext, db.getMemory());
     }
     private void get(RoutingContext routingContext, String json) {
         routingContext.response()

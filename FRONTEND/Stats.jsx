@@ -49,14 +49,14 @@ class Stats extends React.Component {
                 </div>
                 <div className="col-md-2 col-sm-6">
                     <div className="knob-container">
-                        <input className="knob" data-width="200" data-min="0" data-max="8" data-displayprevious="true" value={this.getValue("NUM_CPU_SOCKETS")} data-fgcolor="#666666" readOnly="true"/>
-                        <h3 className="text-muted text-center">CPU Cores</h3>
+                        <input className="knob" data-width="200" data-min="0" data-max="100" data-displayprevious="true"  data-fgcolor="#666666" readOnly="true"  value={this.getValue("SESSIONS")}/>
+                        <h3 className="text-muted text-center">Sessions</h3>
                     </div>
                 </div>
                 <div className="col-md-2 col-sm-6">
                     <div className="knob-container">
-                        <input className="knob" data-width="200" data-min="0" data-max="100" data-displayprevious="true"  data-fgcolor="#262626" readOnly="true"  value={this.getValue("SESSIONS")}/>
-                        <h3 className="text-muted text-center">Sessions</h3>
+                        <input className="knob" data-width="200" data-min="0" data-max="100" data-displayprevious="true" value={this.getValue("MEMORY") | 0} data-fgcolor="#262626" readOnly="true"/>
+                        <h3 className="text-muted text-center">MEMORY(MB)</h3>
                     </div>
                 </div>
                 <div className="col-md-2 col-sm-6">
@@ -68,7 +68,7 @@ class Stats extends React.Component {
                 <div className="col-md-2 col-sm-6">
                     <div className="knob-container">
                         <input className="knob" data-width="200" data-min="0" data-max="1000" data-displayprevious="true" value={this.getValue("SQL")} data-fgcolor="#262626" readOnly="true"/>
-                        <h3 className="text-muted text-center">SQL</h3>
+                        <h3 className="text-muted text-center">#SQL</h3>
                     </div>
                 </div>
 

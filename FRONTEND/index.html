@@ -76,7 +76,7 @@
 
 
           <div class="row">
-              <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="col-xs-6 col-sm-6 col-md-4">
               
                       <div class="panel-heading no-collapse" ><center><b>USERS</b></center></div>
                       <div id = "userstable" class = "scrollable"></div>
@@ -91,6 +91,13 @@
 
               </div>
 
+               <div class="col-xs-6 col-sm-6 col-md-2">
+
+                  <div class="panel-heading no-collapse"><center><b>TABLESPACES</b></center></div>
+                  <div id = "tablespaces" class = "scrollable"></div>
+
+              </div>
+
           </div>
 
           <div style="padding-top: 2em"></div>
@@ -102,17 +109,9 @@
                   <div id = "datafiles" class = "scrollable"></div>
 
               </div>
-              <div class="col-md-6" >
-                  <div style="padding-top: 2em"></div>
-                  <div id="chartContainer" style="height: 240px; width: auto">
-
-                  </div>
-              </div>
-              <div class="col-xs-6 col-sm-6 col-md-2">
-
-                  <div class="panel-heading no-collapse"><center><b>TABLESPACES</b></center></div>
-                  <div id = "tablespaces" class = "scrollable"></div>
-
+              <div class="col-xs-6 col-sm-6 col-md-8" >
+                  <div style="padding-top: 1em"></div>
+                  <div id="chart"></div>
               </div>
 
           </div>
@@ -121,100 +120,11 @@
    <script src = "index.js"></script>
 
    </body>
-
-
-   <script>
-       window.onload = function () {
-
-           var chart = new CanvasJS.Chart("chartContainer", {
-               animationEnabled: true,
-               exportEnabled: true,
-               backgroundColor: "transparent",
-               title:{
-                   text: "Recent SQL statements"
-               },
-//               axisY:{
-//                   title: "Number of Medals"
-//               },
-               toolTip: {
-                   shared: true
-               },
-               legend:{
-                   cursor:"pointer",
-                   itemclick: toggleDataSeries
-               },
-               data: [{
-                   type: "spline",
-                   name: "",
-                   showInLegend: true,
-                   dataPoints: [
-                       { label: "" , y: 44 },
-                       { label:"", y: 37 },
-                       { label: "", y: 36 },
-                       { label: "", y: 36 },
-                       { label: "", y: 46 },
-                       { label: "", y: 46 }
-                   ]
-               },
-                   {
-                       type: "spline",
-                       name: "",
-                       showInLegend: true,
-                       dataPoints: [
-                           { label: "" , y: 16 },
-                           { label:"", y: 28 },
-                           { label: "", y: 32 },
-                           { label: "", y: 48 },
-                           { label: "", y: 38 },
-                           { label: "", y: 26 }
-                       ]
-                   },
-                   {
-                       type: "spline",
-                       name: "",
-                       showInLegend: true,
-                       dataPoints: [
-                           { label: "" , y: 1 },
-                           { label:"", y: 11 },
-                           { label: "", y: 9 },
-                           { label: "", y: 19 },
-                           { label: "", y: 29 },
-                           { label: "", y: 27 }
-                       ]
-                   },
-                   {
-                       type: "spline",
-                       name: "",
-                       showInLegend: true,
-                       dataPoints: [
-                           { label: "" , y: 26 },
-                           { label:"", y: 32 },
-                           { label: "", y: 28 },
-                           { label: "", y: 22 },
-                           { label: "", y: 20 },
-                           { label: "", y: 19 }
-                       ]
-                   }]
-           });
-
-           chart.render();
-
-           function toggleDataSeries(e) {
-               if(typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-                   e.dataSeries.visible = false;
-               }
-               else {
-                   e.dataSeries.visible = true;
-               }
-               chart.render();
-           }
-
-       }
-   </script>
-
+       
     <script type="text/javascript">
+      $(".knob").knob();
            setInterval(function() {
-               $(".knob").knob();
+               $(".knob").trigger('change');
            },100);
     </script>
 </html>

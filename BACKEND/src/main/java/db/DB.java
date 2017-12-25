@@ -36,6 +36,7 @@ public class DB {
     public String getStats(){return getFromDB(" * ", "STATS");}
     public String getSessions(){return getFromDB(" * ", "SESSIONS");}
     public String getUsers(){return getFromDB(" * ", "USERS");}
+    public String getMemory(){return getFromDB(" * ", "MEMORY");}
     private String resultSetToJson(ResultSet rs){
         List<String> list = new ArrayList<String>();
         try {
