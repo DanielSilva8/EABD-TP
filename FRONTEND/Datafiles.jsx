@@ -47,9 +47,9 @@ class Datafiles extends React.Component {
 
                     return (
                         <tr key = {key}>
-                            <td>{item.FILE_NAME}</td>
+                            <td>{item.NAME}</td>
                             <td>{item.TABLESPACE_NAME}</td>
-                            <td>{(item.BYTES / 1048576).toFixed(0)} MB</td>
+                            <td>{(item.DATAFILE_SIZE / 1048576).toFixed(0)} MB</td>
                             <td>{item.STATUS}</td>
                         </tr>
                     );

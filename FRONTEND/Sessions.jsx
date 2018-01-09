@@ -41,7 +41,7 @@ class Sessions extends React.Component {
                     return (
                         <tr key = {key}>
                             <td>{item.SID}</td>
-                            <td>{item.SCHEMANAME}</td>
+                            <td>{item.SCHEMA}</td>
                             <td>{item.TYPE}</td>
                             <td>{item.MACHINE}</td>
                             <td>{item.PROGRAM}</td>

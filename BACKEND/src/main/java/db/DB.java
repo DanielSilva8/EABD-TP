@@ -30,13 +30,12 @@ public class DB {
         }
         return false;
     }
-
-    public String getTablespaces(){return getFromDB(" * ", "TABLESPACES");}
-    public String getDatafiles(){return getFromDB(" * ", "DATAFILES");}
-    public String getStats(){return getFromDB(" * ", "STATS");}
-    public String getSessions(){return getFromDB(" * ", "SESSIONS");}
-    public String getUsers(){return getFromDB(" * ", "USERS");}
-    public String getMemory(){return getFromDB(" * ", "MEMORY");}
+    public String getTablespaces(){return getFromDB(" * ", "TABLESPACES_VIEW");}
+    public String getDatafiles(){return getFromDB(" * ", "DATAFILES_VIEW");}
+    public String getStats(){return getFromDB(" * ", "STATS_VIEW");}
+    public String getSessions(){return getFromDB(" * ", "SESSIONS_VIEW");}
+    public String getUsers(){return getFromDB(" * ", "USERS_VIEW");}
+    public String getMemory(){return getFromDB(" * ", "MEMORY_VIEW");}
     private String resultSetToJson(ResultSet rs){
         List<String> list = new ArrayList<String>();
         try {

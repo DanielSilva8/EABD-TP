@@ -44,7 +44,7 @@ class UsersTable extends React.Component {
                              <td>{item.USER_ID}</td>
                             <td>{item.USERNAME}</td>
                             <td>{item.CREATED}</td>
-                            <td>{item.ACCOUNT_STATUS}</td>
+                            <td>{item.STATUS}</td>
                         </tr>
                     );
 

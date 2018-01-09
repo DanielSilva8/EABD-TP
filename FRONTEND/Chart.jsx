@@ -27,7 +27,7 @@ var max = [];
 var i = 0;
 
 {this.state.data.map(function(item, key) {
-current[i] = {y: Number(item.CURRENTSIZE), label: item.SID};
+current[i] = {y: Number(item.CURRENT_SIZE), label: item.SID};
 max[i] = {y: Number(item.MAXIMUMSIZE), label: item.SID};
 
 i++;

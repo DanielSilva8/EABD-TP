@@ -26,7 +26,7 @@ class Stats extends React.Component {
         {this.state.data.map(function(item, key) {
 
             if (item.STAT_NAME == name) {
-                final = item.VALUE;
+                final = item.STAT_VALUE;
             }
         })}
 

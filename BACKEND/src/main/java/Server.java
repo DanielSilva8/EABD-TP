@@ -4,10 +4,14 @@ import io.vertx.core.Future;
 import io.vertx.core.http.HttpServerResponse;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
+
 /**
  * Created by danys on 12-Dec-17.
  */
+
 public class Server extends AbstractVerticle {
+
+
     DB db = new DB();
 
     @Override
@@ -27,6 +31,7 @@ public class Server extends AbstractVerticle {
         router.get("/stats").handler(this::getStats);
         router.get("/sessions").handler(this::getSessions);
         router.get("/memory").handler(this::getMemory);
+
         vertx
                 .createHttpServer()
                 .requestHandler(router::accept)

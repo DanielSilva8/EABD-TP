@@ -1,4 +1,7 @@
 import database.Oracle;
+import database.UpdateRecords;
+
+import java.util.Timer;
 
 /**
  * Created by danys on 10-Nov-17.
@@ -14,9 +17,9 @@ public class Main {
             System.out.println("Connected");
             db.dropSchema();
             db.createSchema();
-            db.disconnectDB();
-
-            System.out.println("Disconnected");
+            db.updateSchema();
+           // db.disconnectDB();
+           // System.out.println("Disconnected");
         }else{
             System.out.println("Couldn't connect");
         }
